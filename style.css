@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Slab:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Slab', serif;
+  background-color: #1b1b1b;
+  background-image: url('https://i.pinimg.com/1200x/00/66/20/00662018aa24d634151574b4779c49d8.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: #f0e6d2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Main Game Container */
+.container {
+  display: flex;
+  flex-direction: row;
+  max-width: 900px;
+  width: 100%;
+  padding: 40px;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(38, 30, 22, 0.8);
+  border: 6px ridge #b58b57;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
+/* Hangman Panel */
+.hangman-box {
+  background: linear-gradient(to bottom, rgba(215,199,175,0.9), rgba(197,178,157,0.9));
+  padding: 25px;
+  border: 4px inset #8b6a43;
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.hangman-box img {
+  max-width: 240px;
+  filter: drop-shadow(0 0 8px #3a2f1d);
+}
+
+.hangman-box h1 {
+  margin-top: 15px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.7rem;
+  color: #b58b57;
+  text-shadow: 2px 2px 0 #392a19;
+  letter-spacing: 2px;
+}
+
+/* Word Area */
+.word-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  list-style: none;
+}
+
+.word-display .letter {
+  width: 36px;
+  height: 56px;
+  font-size: 2.2rem;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  color: transparent;
+  border-bottom: 3px solid #b58b57;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.word-display .letter.guessed {
+  color: #f0e6d2;
+  text-shadow: 0 0 6px #f0e6d2;
+  border-color: #f0e6d2;
+}
+
+.game-box h4 {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #e4c590;
+}
+
+.guesses-text b {
+  color: #d14e42;
+}
+
+/* Keyboard */
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.keyboard button {
+  padding: 12px;
+  width: calc(100% / 9 - 8px);
+  font-size: 1rem;
+  font-family: 'Press Start 2P', cursive;
+  background: #6b5a47;
+  color: #f0e6d2;
+  border: 3px outset #483c31;
+  border-radius: 6px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 3px 0 #3a2f1f;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.keyboard button:hover:not(:disabled) {
+  background: #8b6a57;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 4px rgba(0,0,0,0.4);
+}
+
+.keyboard button:disabled {
+  background: #3a2f1f;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Pop-up Modal */
+.game-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 999;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.game-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.game-modal .content {
+  background: url("https://i.pinimg.com/1200x/9d/fd/2c/9dfd2cb8f86ebfd81c970963ee50258d.jpg");
+  background-size: cover;
+  background-color: #3e2f25;
+  padding: 50px 30px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+  border: 6px double #f5cd79;
+  position: relative;
+  color: #fff5d7;
+}
+
+.game-modal img {
+  max-width: 100px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 8px #000);
+}
+
+.game-modal h4 {
+  font-size: 1.4rem;
+  color: #ffdd57;
+  text-shadow: 2px 2px 0 #000;
+  margin-bottom: 15px;
+}
+
+.game-modal p {
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin: 15px 0 30px;
+  line-height: 1.6;
+}
+
+.game-modal p b {
+  color: #62e454;
+}
+
+.game-modal button {
+  padding: 12px 30px;
+  background: #e17055;
+  border: 3px solid #d35400;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 10px;
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 5px #6c4e3d;
+}
+
+.game-modal button:hover {
+  background: #d35400;
+  transform: translateY(-2px);
+}
+
+/* Responsive for Tablets */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .hangman-box img {
+    max-width: 180px;
+  }
+
+  .hangman-box h1 {
+    font-size: 1.4rem;
+  }
+
+  .keyboard button {
+    width: calc(100% / 6 - 10px);
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  .word-display .letter {
+    width: 32px;
+    height: 50px;
+    font-size: 1.6rem;
+  }
+
+  .game-modal .content {
+    padding: 30px 20px;
+  }
+
+  .game-modal h4 {
+    font-size: 1.1rem;
+  }
+
+  .game-modal p {
+    font-size: 0.85rem;
+  }
+
+  .game-modal button {
+    font-size: 0.8rem;
+    padding: 10px 20px;
+  }
+}
+
+/* Responsive for Small Mobile Devices */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .hangman-box h1 {
+    font-size: 1rem;
+  }
+
+  .hangman-box img {
+    max-width: 140px;
+  }
+
+  .keyboard button {
+    width: calc(100% / 4 - 10px);
+    font-size: 0.7rem;
+    padding: 8px;
+  }
+
+  .word-display {
+    gap: 10px;
+  }
+
+  .word-display .letter {
+    width: 26px;
+    height: 44px;
+    font-size: 1.4rem;
+  }
+
+  .game-modal .content {
+    padding: 25px 15px;
+  }
+
+  .game-modal h4 {
+    font-size: 1rem;
+  }
+
+  .game-modal p {
+    font-size: 0.75rem;
+  }
+
+  .game-modal button {
+    font-size: 0.75rem;
+    padding: 8px 18px;
+  }
+}
