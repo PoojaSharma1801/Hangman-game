@@ -21,11 +21,6 @@ Players guess the hidden word letter-by-letter before the hangman is fully drawn
 
 ---
 
-## 📸 Screenshot
-*(Add a screenshot of your game here)*
-
----
-
 ## 🚀 How to Play
 1. Click on the letters to guess the hidden word.
 2. Each wrong guess adds a part to the hangman image.
@@ -37,4 +32,4 @@ Players guess the hidden word letter-by-letter before the hangman is fully drawn
 ## 📦 Installation & Setup
 1. **Clone this repository**
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/PoojaSharma1801/Hangman-game.git
