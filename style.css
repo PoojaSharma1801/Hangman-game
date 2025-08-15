@@ -31,7 +31,7 @@ body {
   gap: 40px;
   justify-content: space-between;
   align-items: flex-start;
-  background: rgba(38, 30, 22, 0.8);
+  background: rgba(38, 30, 22, 0.85);
   border: 6px ridge #b58b57;
   border-radius: 10px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
@@ -49,6 +49,7 @@ body {
 
 .hangman-box img {
   max-width: 240px;
+  height: auto;
   filter: drop-shadow(0 0 8px #3a2f1d);
 }
 
@@ -107,8 +108,8 @@ body {
 }
 
 .keyboard button {
-  padding: 12px;
-  width: calc(100% / 9 - 8px);
+  padding: 14px;
+  min-width: 40px;
   font-size: 1rem;
   font-family: 'Press Start 2P', cursive;
   background: #6b5a47;
@@ -159,15 +160,13 @@ body {
 .game-modal .content {
   background: url("https://i.pinimg.com/1200x/9d/fd/2c/9dfd2cb8f86ebfd81c970963ee50258d.jpg");
   background-size: cover;
-  background-color: #3e2f25;
   padding: 50px 30px;
   border-radius: 16px;
   text-align: center;
   max-width: 400px;
-  width: 100%;
+  width: 90%;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
   border: 6px double #f5cd79;
-  position: relative;
   color: #fff5d7;
 }
 
@@ -215,10 +214,11 @@ body {
 }
 
 /* Responsive for Tablets */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .container {
     flex-direction: column;
-    padding: 20px;
+    align-items: center;
+    padding: 25px;
     gap: 20px;
   }
 
@@ -226,37 +226,9 @@ body {
     max-width: 180px;
   }
 
-  .hangman-box h1 {
-    font-size: 1.4rem;
-  }
-
   .keyboard button {
-    width: calc(100% / 6 - 10px);
-    font-size: 0.8rem;
-    padding: 10px;
-  }
-
-  .word-display .letter {
-    width: 32px;
-    height: 50px;
-    font-size: 1.6rem;
-  }
-
-  .game-modal .content {
-    padding: 30px 20px;
-  }
-
-  .game-modal h4 {
-    font-size: 1.1rem;
-  }
-
-  .game-modal p {
-    font-size: 0.85rem;
-  }
-
-  .game-modal button {
-    font-size: 0.8rem;
-    padding: 10px 20px;
+    min-width: 38px;
+    padding: 12px;
   }
 }
 
@@ -266,8 +238,9 @@ body {
     padding: 10px;
   }
 
-  .hangman-box h1 {
-    font-size: 1rem;
+  .container {
+    padding: 15px;
+    gap: 15px;
   }
 
   .hangman-box img {
@@ -275,17 +248,13 @@ body {
   }
 
   .keyboard button {
-    width: calc(100% / 4 - 10px);
-    font-size: 0.7rem;
-    padding: 8px;
-  }
-
-  .word-display {
-    gap: 10px;
+    min-width: 32px;
+    font-size: 0.8rem;
+    padding: 10px;
   }
 
   .word-display .letter {
-    width: 26px;
+    width: 28px;
     height: 44px;
     font-size: 1.4rem;
   }
