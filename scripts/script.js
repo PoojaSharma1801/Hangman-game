@@ -38,7 +38,7 @@ const gameOver = (isVictory) => {
 };
 
 const initGame = (button, clickedLetter) => {
-  soundClick.play(); // Play click sound on every guess
+ 
 
   if (currentWord.includes(clickedLetter)) {
     [...currentWord].forEach((letter, index) => {
@@ -59,7 +59,7 @@ const initGame = (button, clickedLetter) => {
 
   if (wrongGuessCount === maxGuesses) {
     // Play fall sound then lose sound, then show game over
-    soundFall.play();
+  
     setTimeout(() => {
       soundLose.play();
       gameOver(false);
